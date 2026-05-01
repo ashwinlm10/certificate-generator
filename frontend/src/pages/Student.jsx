@@ -12,6 +12,7 @@ function Student() {
   const [assessmentName, setassessmentName] = useState('')
   const [certificateNo, setcertificateNo] = useState('')
   const [date, setdate] = useState('')
+  const [isEligible, setisEligible] = useState(false)
 
   const certRef = useRef()
   const navigate = useNavigate()
@@ -33,6 +34,9 @@ function Student() {
             year: 'numeric'
           })
         )
+
+        // ✅ IMPORTANT LINE
+        setisEligible(res.data.isEligible)
       })
       .catch(err => console.log(err))
 
@@ -59,52 +63,73 @@ function Student() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a0a1a] via-[#0f0c29] to-[#1a1a3e] p-6 flex flex-col items-center">
 
-      {/* Certificate */}
-      <div
-        className="flex justify-center items-center w-full mt-10"
-        style={{ animation: 'fadeInUp 1s ease forwards' }}
-      >
-        <div className="overflow-x-auto">
-          <CertificateTemplate
-            ref={certRef}
-            studentName={studentName}
-            score={score}
-            assessmentName={assessmentName}
-            certificateNo={certificateNo}
-            date={date}
-          />
+      {isEligible ? (
+        <>
+          {/* Certificate */}
+          <div
+            className="flex justify-center items-center w-full mt-10"
+            style={{ animation: 'fadeInUp 1s ease forwards' }}
+          >
+            <div className="overflow-x-auto">
+              <CertificateTemplate
+                ref={certRef}
+                studentName={studentName}
+                score={score}
+                assessmentName={assessmentName}
+                certificateNo={certificateNo}
+                date={date}
+              />
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-4 justify-center flex-wrap mt-6">
+
+            <button
+              onClick={downloadPNG}
+              className="bg-[#1a2d5a] text-white px-6 py-3 rounded-full font-bold hover:bg-blue-900 transition-all duration-300 hover:scale-105 border border-[#b8750a]"
+            >
+              Download PNG
+            </button>
+
+            <button
+              onClick={downloadPDF}
+              className="bg-[#b8750a] text-white px-6 py-3 rounded-full font-bold hover:bg-yellow-700 transition-all duration-300 hover:scale-105"
+              style={{ animation: 'glow 2s ease-in-out infinite' }}
+            >
+              Download PDF
+            </button>
+
+          </div>
+        </>
+      ) : (
+        <div
+          className="text-center mt-20"
+          style={{ animation: 'fadeInUp 0.8s ease forwards' }}
+        >
+          <p className="text-6xl mb-6">❌</p>
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Not Eligible!
+          </h2>
+          <p className="text-gray-400 text-lg">
+            You did not pass the assessment!
+          </p>
+          <p className="text-[#b8750a] font-bold mt-2">
+            Your Score: {score}
+          </p>
         </div>
-      </div>
+      )}
 
-      {/* Buttons */}
-      <div className="max-w-5xl mx-auto flex gap-4 justify-center flex-wrap mt-6">
-
-        <button
-          onClick={downloadPNG}
-          className="bg-[#1a2d5a] text-white px-6 py-3 rounded-full font-bold hover:bg-blue-900 transition-all duration-300 hover:scale-105 border border-[#b8750a]"
-        >
-          Download PNG
-        </button>
-
-        <button
-          onClick={downloadPDF}
-          className="bg-[#b8750a] text-white px-6 py-3 rounded-full font-bold hover:bg-yellow-700 transition-all duration-300 hover:scale-105"
-          style={{ animation: 'glow 2s ease-in-out infinite' }}
-        >
-          Download PDF
-        </button>
-
-        <button
-          onClick={() => {
-            localStorage.clear()
-            navigate('/login')
-          }}
-          className="bg-white/10 text-white px-6 py-3 rounded-full font-bold hover:bg-white/20 transition-all duration-300 border border-white/20"
-        >
-          Logout
-        </button>
-
-      </div>
+      {/* Logout ALWAYS visible */}
+      <button
+        onClick={() => {
+          localStorage.clear()
+          navigate('/login')
+        }}
+        className="bg-white/10 text-white px-6 py-3 rounded-full font-bold hover:bg-white/20 transition-all duration-300 border border-white/20 mt-6"
+      >
+        Logout
+      </button>
 
     </div>
   )
