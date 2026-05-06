@@ -38,7 +38,11 @@ function Student() {
         // ✅ IMPORTANT LINE
         setisEligible(res.data.isEligible)
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+   if(err.response?.status === 404){
+      setisEligible(false)
+   }
+})
 
   }, [])
 
