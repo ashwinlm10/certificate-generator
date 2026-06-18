@@ -233,8 +233,8 @@ POST /api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Ashwin",
-  "email": "ashwin@gmail.com",
+  "name": "your name",
+  "email": "your mail@gmail.com",
   "password": "*****",
   "role": "student"
 }
@@ -247,7 +247,7 @@ POST /api/auth/login
 Content-Type: application/json
 
 {
-  "email": "ashwin@gmail.com",
+  "email": "your mail@gmail.com",
   "password": "*****"
 }
 ```
@@ -259,8 +259,8 @@ Content-Type: application/json
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "user": {
     "id": "69e921f5515cebcb06e0a66b",
-    "name": "Ashwin",
-    "email": "ashwin@gmail.com",
+    "name": "your name",
+    "email": "your mail@gmail.com",
     "role": "student"
   }
 }
@@ -274,7 +274,7 @@ Authorization: Bearer <token>
 Content-Type: application/json
 
 {
-  "studentName": "Ashwin",
+  "studentName": "name",
   "assessmentName": "MERN Stack",
   "score": 82,
   "totalMarks": 100,
@@ -287,7 +287,7 @@ Content-Type: application/json
 ```json
 {
   "_id": "69fab9768a9a2bcda82fa92d",
-  "studentName": "Ashwin",
+  "studentName": "name",
   "assessmentName": "MERN Stack",
   "score": 82,
   "totalMarks": 100,
