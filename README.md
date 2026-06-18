@@ -12,12 +12,12 @@ A full-stack web application built using the **MERN Stack** (MongoDB, Express.js
 
 ## 📸 Screenshots
 
-| Home Page | Issuer Dashboard |
-|-----------|-----------------|
+| Home Page        | Issuer Dashboard   |
+| ---------------- | ------------------ |
 | ![Home](./1.png) | ![Issuer](./2.png) |
 
-| Certificate | Not Eligible |
-|-------------|-------------|
+| Certificate             | Not Eligible             |
+| ----------------------- | ------------------------ |
 | ![Certificate](./3.png) | ![Not Eligible](./4.png) |
 
 ---
@@ -40,30 +40,33 @@ A full-stack web application built using the **MERN Stack** (MongoDB, Express.js
 ## 🛠️ Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|-----------|---------|
-| React.js (Vite) | Frontend framework |
-| Tailwind CSS | Styling and animations |
-| React Router DOM | Client side navigation |
-| Axios | HTTP requests to backend |
-| html2canvas | Screenshot of certificate div |
-| jsPDF | Convert screenshot to PDF |
+
+| Technology       | Purpose                       |
+| ---------------- | ----------------------------- |
+| React.js (Vite)  | Frontend framework            |
+| Tailwind CSS     | Styling and animations        |
+| React Router DOM | Client side navigation        |
+| Axios            | HTTP requests to backend      |
+| html2canvas      | Screenshot of certificate div |
+| jsPDF            | Convert screenshot to PDF     |
 
 ### Backend
-| Technology | Purpose |
-|-----------|---------|
-| Node.js | Server side JavaScript runtime |
-| Express.js | Backend web framework |
+
+| Technology           | Purpose                          |
+| -------------------- | -------------------------------- |
+| Node.js              | Server side JavaScript runtime   |
+| Express.js           | Backend web framework            |
 | JSON Web Token (JWT) | Authentication and authorization |
-| bcryptjs | Password hashing and encryption |
-| Mongoose | MongoDB object modeling |
-| CORS | Cross origin resource sharing |
-| dotenv | Environment variables management |
+| bcryptjs             | Password hashing and encryption  |
+| Mongoose             | MongoDB object modeling          |
+| CORS                 | Cross origin resource sharing    |
+| dotenv               | Environment variables management |
 
 ### Database
-| Technology | Purpose |
-|-----------|---------|
-| MongoDB | NoSQL database for data storage |
+
+| Technology      | Purpose                          |
+| --------------- | -------------------------------- |
+| MongoDB         | NoSQL database for data storage  |
 | MongoDB Compass | GUI tool for database management |
 
 ---
@@ -122,6 +125,7 @@ certificate-generator/
 ### Prerequisites
 
 Make sure you have the following installed:
+
 - [Node.js](https://nodejs.org/) (v18 or above)
 - [MongoDB](https://www.mongodb.com/) (local) or MongoDB Compass
 - [Git](https://git-scm.com/)
@@ -165,6 +169,7 @@ node app.js
 ```
 
 You should see:
+
 ```
 server started at 5000
 MongoDB connected
@@ -187,6 +192,7 @@ npm run dev
 ```
 
 You should see:
+
 ```
 VITE v5.x.x  ready in xxx ms
 ➜  Local:   http://localhost:5173/
@@ -206,17 +212,17 @@ http://localhost:5173
 
 ### Authentication Routes
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/auth/register` | Register new user | No |
-| POST | `/api/auth/login` | Login and get JWT token | No |
+| Method | Endpoint             | Description             | Auth Required |
+| ------ | -------------------- | ----------------------- | ------------- |
+| POST   | `/api/auth/register` | Register new user       | No            |
+| POST   | `/api/auth/login`    | Login and get JWT token | No            |
 
 ### Certificate Routes
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/certificate/create` | Create new certificate | Yes (Issuer) |
-| GET | `/api/certificate/get` | Get student certificate | Yes (Student) |
+| Method | Endpoint                  | Description             | Auth Required |
+| ------ | ------------------------- | ----------------------- | ------------- |
+| POST   | `/api/certificate/create` | Create new certificate  | Yes (Issuer)  |
+| GET    | `/api/certificate/get`    | Get student certificate | Yes (Student) |
 
 ---
 
@@ -229,7 +235,7 @@ Content-Type: application/json
 {
   "name": "Ashwin",
   "email": "ashwin@gmail.com",
-  "password": "123456",
+  "password": "*****",
   "role": "student"
 }
 ```
@@ -242,7 +248,7 @@ Content-Type: application/json
 
 {
   "email": "ashwin@gmail.com",
-  "password": "123456"
+  "password": "*****"
 }
 ```
 
@@ -381,6 +387,7 @@ STUDENT FLOW:
 ## 🐛 Common Issues and Fixes
 
 ### Issue 1 — MongoDB not connecting
+
 ```
 Make sure MongoDB is running locally
 Open MongoDB Compass and connect to:
@@ -388,6 +395,7 @@ mongodb://127.0.0.1:27017
 ```
 
 ### Issue 2 — Certificate not found (404)
+
 ```
 Make sure student name in database
 matches exactly with the name
@@ -395,6 +403,7 @@ entered by issuer (case sensitive)
 ```
 
 ### Issue 3 — html2canvas oklch error
+
 ```
 This happens with Tailwind v4
 Solution: Use Tailwind v3 with postcss
@@ -402,6 +411,7 @@ npm install tailwindcss@3 autoprefixer postcss
 ```
 
 ### Issue 4 — CORS error
+
 ```
 Make sure cors is added in app.js:
 const cors = require('cors')
@@ -444,6 +454,7 @@ app.use(cors())
 ## 👨‍💻 Author
 
 **Ashwin L M**
+
 - USN: 4PM22IS004
 - College: PES Institute of Technology and Management, Shivamogga
 - Internship: Dyashin Technosoft Pvt. Ltd., Bengaluru
